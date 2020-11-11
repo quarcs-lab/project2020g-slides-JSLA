@@ -21,16 +21,16 @@ options(htmltools.dir.version = FALSE)
 
 ## Motivation:
 
-- Policy development and management should consider not only current challenges but also the potential values in the near future.
+- Policy development and management should consider not only current challenges but also **the potential challenges in the near future**.
 
 - Persistent income differences, differences in health indicators and in "general" regional inequality in Colombia.
 
-- Scarce academic literature on the forecasting of crime at the municipal level in Colombia. 
+- Scarce academic literature on the **forecasting of crime** at the municipal level in Colombia. 
 
 
 ## Research Objective:
   
-- To create a simple forecasting model that can predict homicide rates 4-years into the future.
+- **To build a forecasting model that can predict homicide rates 4 years into the future**
 
 - Analyze the spatial distribution of the forecasted homicide rates in 2022
 
@@ -39,7 +39,7 @@ options(htmltools.dir.version = FALSE)
 - Exponential smoothing
 - ARIMA models
 - STAR models
-- Classical convergence framework (Barro and Sala-i-Martin 1992)
+- **Classical convergence framework (Barro and Sala-i-Martin 1992)**
 
 ---
 
@@ -98,7 +98,7 @@ class: middle
 
 # Data:
 
-- Total number of **homicides** and in Colombia per year from 2003 until 2018 (data taken from Municipal data-set Universidad de los Andes, Bogota, Colombia ).
+- Total number of **homicides** and in Colombia per year from 2003 until 2018 (**data taken from Municipal data-set Universidad de los Andes, Bogota, Colombia**).
 
 - Data is aggregated at the municipal and departmental levels.
 
@@ -133,7 +133,7 @@ An autoregressive model of order p
 
 $$y_{t}=c+\phi_{1} y_{t-1}+\phi_{2} y_{t-2}+\cdots+\phi_{p} y_{t-p}+\varepsilon_{t}$$
 A moving average model considers past forecast
-errors in a linear model
+errors in a linear model:
 
 $$y_{t}=c+\varepsilon_{t}+\theta_{1} \varepsilon_{t-1}+\theta_{2} \varepsilon_{t-2}+\cdots+\theta_{q} \varepsilon_{t-q}$$
 An autoregressive model, a moving average model and the differentiating of the data can be combined into a non-seasonal ARIMA model:
@@ -153,7 +153,7 @@ time lagged variables at location $j$
 order (l).
 
 
-These models have been successfully used to forecast crime data in the United States. 
+These models have been **successfully used to forecast crime data in the United States**. 
 See Shoesmith GL (2013) Space-time autoregressive models and forecasting
 national, regional and state crime rates.
 
@@ -172,7 +172,7 @@ $$(1 / T) \cdot \log \frac{y_{i T}}{y_{i 0}}=\alpha-\left[1-e^{-\beta T}\right] 
 
 Solving the equation for $y_{i T}$: 
 $$(1 / T) \cdot \log \left(y_{i T}\right)=\alpha+e^{-\beta T} \cdot \log \left(y_{i 0}\right)+w_{i, 0 T}$$
-Therefore, a plausible 4-year ahead forecast can be:
+Therefore, a plausible 4-year ahead forecast is:
 
 $$\log \left(\hat{y}_{i(t+4) \mid t}\right)=\hat{\alpha}_{t+4 \mid t}+\hat{\beta}_{t+4 \mid t} \cdot \log \left(y_{i t}\right)+w_{i, t}$$
 
@@ -184,21 +184,22 @@ class: middle, justify
 - Spatial beta convergence models have been used to model the dynamics of crime **(Santos-Marquez and Mendez, 2020)**
 - In order to simplify the computations instead of a SAR
 (spatial autoregressive model) or a SEM (spatial error model), **an SLX model
-(Spatially Lagged X) is proposed to forecast homicide**, the spatial equivalent
+(Spatially Lagged X) is proposed to forecast homicide**.
+- the spatial equivalent
 of the equation in the previous slide is:
 
 $$(1 / T) \cdot \log \frac{y_{i T}}{y_{i 0}}=\alpha-\left[1-e^{-\beta T}\right] \cdot \log \left(y_{i 0}\right)+\theta W \cdot \log \left(y_{i 0}\right)+\epsilon_{i, 0 T}$$
-Therefore, a plausible 4-year ahead forecast can be:
+Therefore, a plausible 4-year ahead forecast is:
 
 $$\log \left(\hat{y}_{i(t+4) \mid t}\right)=\hat{\alpha}_{t+4 \mid t}+\hat{\beta}_{t+4 \mid t} \cdot \log \left(y_{i t}\right)+\hat{\theta}_{t+4 \mid t} W \cdot \log \left(y_{i t}\right)+\epsilon_{i, t}$$
-Where three coefficients need to be forecasted $\alpha$, $\beta$ and $\theta$.
+Where three coefficients need to be computed: $\alpha$, $\beta$ and $\theta$.
 
 ---
 class: middle, center
 
 # Time series forecast accuracy and cross-validation
 
-##How can the best forecasting model be chosen?
+#How can the best forecasting model be chosen?
 
 $$\begin{aligned}
 &\text { Mean absolute error: } \operatorname{MAE}=\operatorname{mean}\left(\left|e_{t}\right|\right)\\
@@ -216,7 +217,7 @@ class: center, middle
 
 <img src="figs/beta_forecast.png" style="width: 70%" />
 
-The linear regressions are used to compute the coefficients in:
+Linear regressions are used to compute the coefficients in:
 
 $$\log \left(\hat{y}_{i(t+4) \mid t}\right)=\hat{\alpha}_{t+4 \mid t}+\hat{\beta}_{t+4 \mid t} \cdot \log \left(y_{i t}\right)+\hat{\theta}_{t+4 \mid t} W \cdot \log \left(y_{i t}\right)+\epsilon_{i, t}$$
 $$\log \left(\hat{y}_{i(t+4) \mid t}\right)=\hat{\alpha}_{t+4 \mid t}+\hat{\beta}_{t+4 \mid t} \cdot \log \left(y_{i t}\right)+w_{i, t}$$
@@ -233,7 +234,7 @@ class: justify
 # Forecasting homicide rates for 2022
 
 - In the Colombian National Development Plan 2018-2022 DNP (2018) there are national targets for a variety of SDG related variables for the year 2022.
-- In terms of homicides the baseline for 2018 is 25.8(per 100.000 people) and
+- In terms of homicides the baseline for 2018 is 2.58(per 10.000 people) and
 the **2022 target is 2.32 per 10.000 people (nmr= 9997.68)**
 
 
@@ -250,14 +251,14 @@ class: center
 ---
 class: center
 ## The spatial distribution of the forecasted crime
-**regions in dark green are lagging behind**
+**municipalities in dark green are lagging behind**
 
 <img src="figs/belo1822.png" style="width: 100%" />
 
 ---
 class: center
 ## The spatial distribution of the forecasted crime
-**regions in dark green are lagging behind**
+**municipalities in dark green are lagging behind**
 
 <img src="figs/belo1822cc.png" style="width: 100%" />
 
@@ -277,7 +278,7 @@ class: center
 
 - It could be more appropriate for the formulation of development plans to have targets at the **state level or regional level**.
 
-- For example, there is a clear negative spill-over in the municipalities in **the pacific region**.
+- For example, there is a clear negative spill-over in the municipalities in **the pacific region (in purple)**.
 
 ]
 
@@ -304,12 +305,14 @@ target to 768 out of 1120 in 2022.
 
 ## The Role of Space
 
-- There are positive and negative spillovers.
+- There are **positive and negative spillovers**.
 
-- Policy should be localized in order to reverse the creation of crime clusters.
+- **Policy should be localized in order to reverse the creation of crime clusters**.
 
 ## Further Research 
 
+- **Other determinants** may help to improve the forecasting accuracy of the beta models.
+- A **damped trend method** may help to correct for municipalities that are forecasted to have 0.0 crime rates
 ---
 class: center, middle
 
